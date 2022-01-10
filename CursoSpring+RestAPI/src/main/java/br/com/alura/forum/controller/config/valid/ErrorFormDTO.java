@@ -5,8 +5,6 @@ public class ErrorFormDTO {
 	public String campo;
 	private String erro;
 
-	
-	
 	public ErrorFormDTO(String campo, String erro) {
 		this.campo = campo;
 		this.erro = erro;

@@ -86,7 +86,7 @@ public class TopicosController {
 	@PutMapping("/{id}")
 	@Transactional
 	@CacheEvict(value ="listaDeTopicos", allEntries = true )
-	public ResponseEntity<TopicoDto> atulizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoFormDTO form) {
+	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoFormDTO form) {
 		Optional<Topico> optionalTopico = topicoRepository.findById(id);
 		if (optionalTopico.isPresent()) {
 
