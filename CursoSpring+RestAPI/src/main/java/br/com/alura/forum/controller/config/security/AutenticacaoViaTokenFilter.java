@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,6 +17,7 @@ import br.com.alura.forum.controller.TokenService;
 import br.com.alura.forum.modelo.Usuario;
 import br.com.alura.forum.repository.UsuarioRepository;
 
+@Profile("prod")
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 
 	private TokenService tokenService;

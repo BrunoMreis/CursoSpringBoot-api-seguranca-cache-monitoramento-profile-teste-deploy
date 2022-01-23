@@ -1,16 +1,24 @@
 package br.com.alura.forum;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ForumApplicationTests {
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import br.com.alura.forum.modelo.Curso;
+import br.com.alura.forum.repository.CursoRepository;
+
+
+@DataJpaTest(showSql = true)
+ class ForumApplicationTests {
+
+	private CursoRepository repository;
+	
 	@Test
-	public void contextLoads() {
+	void  deveCarregarUmcurso() {
+		Curso curso = repository.findByNome("HTML 5");
+		Assertions.assertNotNull(curso);
+		Assertions.assertEquals("HTML 5",curso.getNome());
 	}
 
 }
