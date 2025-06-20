@@ -1,6 +1,5 @@
 package br.com.alura.forum.controller.config.security;
 
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import br.com.alura.forum.controller.TokenService;
 import br.com.alura.forum.repository.UsuarioRepository;
+import jakarta.annotation.PostConstruct;
 
 @EnableWebSecurity
 @Configuration
