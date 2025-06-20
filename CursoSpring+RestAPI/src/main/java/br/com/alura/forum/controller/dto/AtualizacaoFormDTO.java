@@ -1,7 +1,7 @@
 package br.com.alura.forum.controller.dto;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -45,7 +45,7 @@ public class AtualizacaoFormDTO {
 	}
 
 	public Topico atualizar(Long id, TopicoRepository topicoRepository) {
-		Topico topico = topicoRepository.getById(id);
+		Topico topico = topicoRepository.getReferenceById(id);
 
 		topico.setMensagem(mensagem);
 		topico.setTitulo(titulo);

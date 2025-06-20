@@ -1,6 +1,6 @@
 package br.com.alura.forum.controller;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.forum.controller.dto.TokenDTO;
 import br.com.alura.forum.controller.form.FormLogin;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
