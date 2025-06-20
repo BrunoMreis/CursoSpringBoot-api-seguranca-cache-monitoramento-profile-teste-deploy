@@ -37,7 +37,7 @@ public class TokenService {
 
 	public Boolean isValido(String token) {
 		try {
-			Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+			Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token);
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -46,7 +46,7 @@ public class TokenService {
 	}
 
 	public Long getIdUsuario(String token) {
-		Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+		Claims claims = Jwts.parser().setSigningKey(secret).build().parseClaimsJws(token).getBody();
 		
 		return Long.parseLong(claims.getSubject());
 	}
