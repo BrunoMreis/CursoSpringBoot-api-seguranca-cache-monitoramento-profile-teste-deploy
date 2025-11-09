@@ -3,6 +3,7 @@ package br.com.alura.forum.controller.config.security;
 import java.io.IOException;
 
 import org.springframework.context.annotation.Profile;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -27,11 +28,11 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 	}
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+	protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,@NonNull FilterChain filterChain)
 			throws ServletException, IOException {
 
 		String token = pegaToken(request);
-		Boolean valido = tokenService.isValido(token);
+		boolean valido = tokenService.isValido(token);
 		if(valido) {
 			autenticarCliente(token);
 		}
@@ -44,8 +45,9 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 
 	private void autenticarCliente(String token) {
 		
-		Long idUsuario =tokenService.getIdUsuario(token);
-		Usuario usuario = usuarioRepository.findById(idUsuario).get() ;
+		Long idUsuario = tokenService.getIdUsuario(token);
+		Usuario usuario = usuarioRepository.findById(idUsuario)
+				.orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 		
 		UsernamePasswordAuthenticationToken authentication = 
 				new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());

@@ -16,27 +16,27 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import br.com.alura.forum.controller.TokenService;
 import br.com.alura.forum.repository.UsuarioRepository;
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @EnableWebSecurity
 @Configuration
 @Profile("prod")
 public class SecurityConfigurations {
 
-    private final AutenticacaoService autenticacaoService;
+    private static final Logger logger = LoggerFactory.getLogger(SecurityConfigurations.class);
+
     private final TokenService tokenService;
     private final UsuarioRepository usuarioRepository;
 
-    @Autowired
-    public SecurityConfigurations(AutenticacaoService autenticacaoService, TokenService tokenService,
-                                  UsuarioRepository usuarioRepository) {
-        this.autenticacaoService = autenticacaoService;
+    public SecurityConfigurations(TokenService tokenService, UsuarioRepository usuarioRepository) {
         this.tokenService = tokenService;
         this.usuarioRepository = usuarioRepository;
     }
 
     @PostConstruct
     public void listar() {
-        System.err.println(usuarioRepository.findAll());
+        logger.info("Usuarios encontrados: {}", usuarioRepository.findAll());
     }
 
     @Bean

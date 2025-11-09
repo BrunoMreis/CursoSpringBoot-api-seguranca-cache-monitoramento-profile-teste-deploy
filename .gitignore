@@ -246,3 +246,11 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,visualstudiocode,intellij
+CursoSpring+RestAPI/.settings/org.eclipse.jdt.core.prefs
+CursoSpring+RestAPI/.settings/org.eclipse.jdt.core.prefs
+
+.vscode/settings.json
+CursoSpring+RestAPI/.classpath
+CursoSpring+RestAPI/.settings/org.eclipse.core.resources.prefs
+CursoSpring+RestAPI/.settings/org.eclipse.jdt.core.prefs
+
