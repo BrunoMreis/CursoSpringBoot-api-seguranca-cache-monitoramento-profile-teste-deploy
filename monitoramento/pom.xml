@@ -10,14 +10,57 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.12</version>
+		<version>3.5.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<java.version>25</java.version>
 		<maven.compiler.release>25</maven.compiler.release>
+		<!-- fix vulnerabilities: this version of tomcat is compatible with spring boot 3.5.16 and
+		fixes vulnerabilities in tomcat 10.1.54	 -->
+		<tomcat.version>10.1.56</tomcat.version>
+		<httpcore5.version>5.4.2</httpcore5.version>
 	</properties>
+
+		<dependencyManagement>
+		<dependencies>
+			<!-- fix vulnerabilities additional substitutions sub dependencies -->
+			<!-- fix vulnerabilities: compatible with spring boot 3.5.16 -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>1.5.37</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>1.5.37</version>
+			</dependency>
+			<!--fim  fix vulnerabilities: compatible with spring boot 3.5.16 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>2.22.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.22.0</version>
+			</dependency>
+			<dependency>
+				<groupId>tools.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>3.2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>tools.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>3.2.0</version>
+			</dependency>
+			<!--fim: fix vulnerabilities additional substitutions sub dependencies -->
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -37,18 +80,16 @@
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>3.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>3.1.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-server</artifactId>
-			<version>3.5.6</version>
+			<version>3.5.9</version>
    		</dependency> 
 
 		<dependency>
